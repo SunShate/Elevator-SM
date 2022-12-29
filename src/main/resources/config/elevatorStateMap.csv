@@ -1,0 +1,12 @@
+start, "up", up
+start, "down", down,
+start, "open door", change door status
+up, "currentFloor != nextFloor", up
+up, "open door", change door status
+up, "nextFloor >= lastFloor", final state
+down, "currentFloor" != nextFloor", down,
+down, "currentFloor == nextFloor", change door status
+down, "nextFloor <= firstFloor", final state
+change door status, "currentFloor == nextFloor", change door status
+change door status, "currentFloor > nextFloor", down
+change door status, "currentFloor < nextFloor", up
