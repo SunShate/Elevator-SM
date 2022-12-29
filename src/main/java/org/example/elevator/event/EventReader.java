@@ -47,9 +47,6 @@ public class EventReader implements IEventReader {
                 if (from > to) {
                     events.add(new Event("down", from, to));
                 }
-                if (from == to) {
-                    events.add(new Event("open door", from, to));
-                }
                 if (from < to) {
                     events.add(new Event("up", from, to));
                 }

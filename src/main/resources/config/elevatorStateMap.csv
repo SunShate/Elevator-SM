@@ -1,12 +1,12 @@
-start, "up", up
-start, "down", down,
-start, "open door", change door status
-up, "currentFloor != nextFloor", up
-up, "open door", change door status
-up, "nextFloor >= lastFloor", final state
-down, "currentFloor" != nextFloor", down,
-down, "currentFloor == nextFloor", change door status
-down, "nextFloor <= firstFloor", final state
-change door status, "currentFloor == nextFloor", change door status
-change door status, "currentFloor > nextFloor", down
-change door status, "currentFloor < nextFloor", up
+start, "event.type == up", move up
+start, "event.type == down", move down
+move up, "currentFloor == currentEvent.floor", change door status
+move up, "currentFloor != currentEvent.floor && currentFloor == one of destinationFloor", change door status
+move up, "currentFloor != currentEvent.floor && currentFloor != one of destinationFloor", move up
+move up, "currentFloor == currentEvent.callFloor && currentFloor != one of destinationFloor", move up
+move down, "currentFloor == currentEvent.floor", change door status
+move down, "currentFloor != currentEvent.floor && currentFloor == one of destinationFloor", change door status
+move down, "currentFloor != currentEvent.floor && currentFloor != one of destinationFloor", move down
+move down, "currentFloor == currentEvent.callFloor && currentFloor != one of destinationFloor", move down
+change door status, "event.destination && new event.type = up", move up
+change door status, "event.destination && new event.type = down", move down
